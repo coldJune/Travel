@@ -1,4 +1,4 @@
-package com.competition.db.userbackground.dao.impl;
+package com.competition.db.dao.impl;
 
 
 
@@ -10,9 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.competition.db.common.BasicOperation;
+import com.competition.db.dao.UserBackgroundDao;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserBackground;
-import com.competition.db.userbackground.dao.UserBackgroundDao;
 
 
 

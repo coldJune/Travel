@@ -4,8 +4,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
@@ -39,18 +39,22 @@
 		<!-- 配置sessionFactory -->
 		<property name="sessionFactory" ref="sessionFactory"></property>	
 	</bean>
+	<!-- 配置事务的契入点，再把事务属性和事务切入点关联起来 -->
+	<aop:config>
+		<aop:pointcut id="txPointCut" expression="execution(* com.competition.db.dao.impl.*DaoImpl *(..)" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+	</aop:config> 
 	<!-- 配置事务属性 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true"/>
-			<tx:method name="*"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="find*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>
-	<!-- 配置事务的契入点，再把事务属性和事务切入点关联起来 -->
-	<!-- <aop:config>
-		<aop:pointcut expression="execution(* com.jun.ssh.service.*.*(..))" id="txPointCut"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
-	</aop:config> -->
+	
 	<!-- 配置dao实现类的bean -->
 		<bean id="userDaoImpl"
 			class="com.competition.db.user.dao.impl.UserDaoImpl">
@@ -60,21 +64,44 @@
 		<bean id="daoTemplate" abstract="true" lazy-init="true"
 			p:sessionFactory-ref="sessionFactory"/>
 		<bean id="userDao"
-			class="com.competition.db.user.dao.impl.UserDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserDaoImpl" parent="daoTemplate"/>
 		<bean id="userAlbumDao" 
-			class="com.competition.db.useralbum.dao.impl.UserAlbumDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserAlbumDaoImpl" parent="daoTemplate"/>
 		<bean id="userCollectionDao"
-			class="com.competition.db.usercollection.dao.impl.UserCollectionDaoImpl"  parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserCollectionDaoImpl"  parent="daoTemplate"/>
 		<bean id="userBackgroundDao"
-			class="com.competition.db.userbackground.dao.impl.UserBackgroundDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserBackgroundDaoImpl" parent="daoTemplate"/>
 		<bean id="albumCommentDao"
-			class="com.competition.db.albumcomment.dao.impl.AlbumCommentDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.AlbumCommentDaoImpl" parent="daoTemplate"/>
 		<bean id="albumPhotoDao"
-			class="com.competition.db.albumphoto.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
 		
 	<!-- 配置service实现类的bean -->
-	
-	
+		<bean id="albumCommentService"
+			class="com.competition.db.service.impl.AlbumCommentServiceImpl">
+			<property name="albumCommentDao" ref="albumCommentDao"></property>	
+		</bean>
+		<bean id="albumPhotoService"
+			class="com.competition.db.service.impl.AlbumPhotoServiceImpl">
+			<property name="albumPhotoDao" ref="albumPhotoDao"></property>	
+		</bean>
+		<bean id="userAlbumService"
+			class="com.competition.db.service.impl.UserAlbumServiceImpl">
+			<property name="userAlbumDao" ref="userAlbumDao"></property>	
+		</bean>
+		<bean id="userBackgroundService"
+			class="com.competition.db.service.impl.UserBackgroundServiceImpl">
+			<property name="userBackgroundDao" ref="userBackgroundDao"></property>	
+		</bean>
+		<bean id="userCollectionService"
+			class="com.competition.db.service.impl.UserCollectionServiceImpl">
+			<property name="userCollectionDao" ref="userCollectionDao"></property>	
+		</bean>
+		<bean id="userService"
+			class="com.competition.db.service.impl.UserServiceImpl">
+			<property name="userDao" ref="userDao"></property>	
+		</bean>
+			
 	<!-- 配置action bean-->
 	
 </beans>

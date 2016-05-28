@@ -1,4 +1,4 @@
-package com.competition.db.userbackground.dao;
+package com.competition.db.dao;
 
 
 

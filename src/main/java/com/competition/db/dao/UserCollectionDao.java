@@ -1,4 +1,4 @@
-package com.competition.db.usercollection.dao;
+package com.competition.db.dao;
 
 
 

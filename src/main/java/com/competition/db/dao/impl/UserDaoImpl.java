@@ -1,4 +1,4 @@
-package com.competition.db.user.dao.impl;
+package com.competition.db.dao.impl;
 
 
 
@@ -10,8 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.competition.db.common.BasicOperation;
+import com.competition.db.dao.UserDao;
 import com.competition.db.pojo.User;
-import com.competition.db.user.dao.UserDao;
 
 
 

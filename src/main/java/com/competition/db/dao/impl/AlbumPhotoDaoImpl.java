@@ -1,4 +1,4 @@
-package com.competition.db.albumphoto.dao.impl;
+package com.competition.db.dao.impl;
 
 
 
@@ -9,8 +9,8 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.competition.db.albumphoto.dao.AlbumPhotoDao;
 import com.competition.db.common.BasicOperation;
+import com.competition.db.dao.AlbumPhotoDao;
 import com.competition.db.pojo.AlbumPhoto;
 import com.competition.db.pojo.UserAlbum;
 

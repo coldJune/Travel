@@ -1,4 +1,6 @@
-package com.competition.db.userservice.dao;
+package com.competition.db.service;
+
+import java.util.List;
 
 import com.competition.db.pojo.User;
 /**
@@ -7,11 +9,11 @@ import com.competition.db.pojo.User;
  *@version 1.0
  *@date 2016/5/26
  */
-public interface UserServiceDao {
+public interface UserService {
 		public boolean checkName(String  name);
 		public boolean checkPass(String namer,String pass);
-		public boolean addUser(User user);
-		public boolean updateUser(User user);
-		public boolean getAll();
+		public void addUser(User user);
+		public void updateUser(User user);
+		public List<User> getAll();
 		
 }

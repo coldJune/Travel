@@ -1,4 +1,4 @@
-package com.competition.db.usercollection.dao.impl;
+package com.competition.db.dao.impl;
 
 
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.competition.db.common.BasicOperation;
+import com.competition.db.dao.UserCollectionDao;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserCollection;
-import com.competition.db.usercollection.dao.UserCollectionDao;
 
 
 

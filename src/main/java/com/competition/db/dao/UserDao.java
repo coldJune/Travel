@@ -1,4 +1,4 @@
-package com.competition.db.user.dao;
+package com.competition.db.dao;
 
 
 import java.util.List;

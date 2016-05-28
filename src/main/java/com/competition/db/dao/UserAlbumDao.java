@@ -1,4 +1,4 @@
-package com.competition.db.useralbum.dao;
+package com.competition.db.dao;
 
 
 

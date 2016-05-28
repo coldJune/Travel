@@ -1,4 +1,4 @@
-package com.competition.db.useralbum.dao.impl;
+package com.competition.db.dao.impl;
 
 
 
@@ -13,9 +13,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.competition.db.common.BasicOperation;
+import com.competition.db.dao.UserAlbumDao;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserAlbum;
-import com.competition.db.useralbum.dao.UserAlbumDao;
 
 
 
