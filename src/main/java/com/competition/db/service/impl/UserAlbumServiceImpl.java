@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import com.competition.db.dao.UserAlbumDao;
-import com.competition.db.dao.impl.UserAlbumDaoImpl;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserAlbum;
 import com.competition.db.service.UserAlbumService;

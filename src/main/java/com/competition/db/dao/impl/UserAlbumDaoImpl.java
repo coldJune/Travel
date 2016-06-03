@@ -2,15 +2,13 @@ package com.competition.db.dao.impl;
 
 
 
-import java.io.Serializable;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+
 
 import com.competition.db.common.BasicOperation;
 import com.competition.db.dao.UserAlbumDao;
@@ -60,7 +58,7 @@ public class UserAlbumDaoImpl extends BasicOperation<UserAlbum> implements UserA
 		// TODO Auto-generated method stub
 		String hqlString = "select userAlbum from UserAlbum as userAlbum where userAlbum.user_id ="
 				+ "(select user_id from User where user.user_name = :user_name)";
-		List l = getSessionFactory().getCurrentSession().createSQLQuery(hqlString).setString("user_name", user.getM_sUserName()).list();
+		List<?> l = getSessionFactory().getCurrentSession().createSQLQuery(hqlString).setString("user_name", user.getM_sUserName()).list();
 		List<UserAlbum> albums= new ArrayList<>(); 
 		for(Object ele: l){
 			UserAlbum album = (UserAlbum)ele;

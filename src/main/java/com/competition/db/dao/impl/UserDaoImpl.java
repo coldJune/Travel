@@ -2,12 +2,10 @@ package com.competition.db.dao.impl;
 
 
 
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import com.competition.db.common.BasicOperation;
 import com.competition.db.dao.UserDao;
@@ -63,7 +61,7 @@ public class UserDaoImpl extends BasicOperation<User> implements UserDao<User> {
 	public List<User> getAll() {
 		// TODO Auto-generated method stub
 		String sqlAll = "select distinct user from User as user";
-		List l = getSessionFactory().getCurrentSession().createQuery(sqlAll).list();
+		List<?> l = getSessionFactory().getCurrentSession().createQuery(sqlAll).list();
 		List<User> result = new ArrayList<User>();
 		for(Object ele:l){
 			User user = (User)ele;

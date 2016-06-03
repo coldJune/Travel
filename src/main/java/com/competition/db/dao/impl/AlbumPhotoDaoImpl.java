@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+
 
 import com.competition.db.common.BasicOperation;
 import com.competition.db.dao.AlbumPhotoDao;

@@ -3,7 +3,6 @@ package com.competition.db.dao;
 
 
 import java.util.List;
-import java.util.Set;
 
 import com.competition.db.common.BasicDao;
 import com.competition.db.pojo.AlbumPhoto;

@@ -3,7 +3,6 @@ package com.competition.db.service.impl;
 import java.util.List;
 
 import com.competition.db.dao.AlbumCommentDao;
-import com.competition.db.dao.impl.AlbumCommentDaoImpl;
 import com.competition.db.pojo.AlbumComment;
 import com.competition.db.pojo.UserAlbum;
 import com.competition.db.service.AlbumCommentService;

@@ -3,7 +3,6 @@ package com.competition.db.service.impl;
 import java.util.List;
 
 import com.competition.db.dao.UserBackgroundDao;
-import com.competition.db.dao.impl.UserBackgroundDaoImpl;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserBackground;
 import com.competition.db.service.UserBackgroundService;
