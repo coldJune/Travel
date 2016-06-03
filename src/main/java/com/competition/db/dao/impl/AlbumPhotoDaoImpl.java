@@ -1,12 +1,11 @@
 package com.competition.db.dao.impl;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import com.competition.db.common.BasicOperation;
 import com.competition.db.dao.AlbumPhotoDao;
@@ -21,20 +20,18 @@ public class AlbumPhotoDaoImpl extends BasicOperation<AlbumPhoto> implements Alb
 	 */
 	@Override
 	public void addPhotoByAluObj(UserAlbum album,AlbumPhoto photo) {
-		// TODO Auto-generated method stub
 		photo.setM_UA_Photo_UserAlbum(album);
 		getSessionFactory().getCurrentSession().save(photo);
 	}
 
 	@Override
 	public void deletePhotoByPhtObj(AlbumPhoto photo) {
-		// TODO Auto-generated method stub
 		getSessionFactory().getCurrentSession().delete(photo);
 	}
 
 	@Override
 	public List<AlbumPhoto> findAllPhotoByAluObj(UserAlbum album) {
-		// TODO Auto-generated method stub
+		this.getSessionFactory().getCurrentSession().update(album);
 		Set<AlbumPhoto> photos_set = album.getM_UPUserPhotos();
 		List<AlbumPhoto> photos_list = new ArrayList<AlbumPhoto>();
 		for(AlbumPhoto ele: photos_set){
@@ -45,12 +42,7 @@ public class AlbumPhotoDaoImpl extends BasicOperation<AlbumPhoto> implements Alb
 
 	@Override
 	public void updatePhotoByAluObj(UserAlbum album, AlbumPhoto photo) {
-		// TODO Auto-generated method stub
 		photo.setM_UA_Photo_UserAlbum(album);
 		getSessionFactory().getCurrentSession().save(photo);
 	}
-
-	
-
 }
-

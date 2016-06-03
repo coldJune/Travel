@@ -1,6 +1,5 @@
 package com.competition.db.common;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,7 +23,6 @@ public class BasicOperation<T> implements BasicDao<T>{
 	@Override
 	@SuppressWarnings("unchecked")
 	public T get(Class<T> entityClazz, Serializable id) {
-		// TODO Auto-generated method stub
 		return (T)getSessionFactory().getCurrentSession().get(entityClazz, id);
 	}
 
@@ -32,8 +30,8 @@ public class BasicOperation<T> implements BasicDao<T>{
 	 * 保存实体
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Serializable save(T entity) {
-		// TODO Auto-generated method stub
 		return getSessionFactory().getCurrentSession().save(entity);
 	}
 
@@ -41,8 +39,8 @@ public class BasicOperation<T> implements BasicDao<T>{
 	 * 更新实体
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void update(T entity) {
-		// TODO Auto-generated method stub
 		getSessionFactory().getCurrentSession().saveOrUpdate(entity);
 	}
 
@@ -50,8 +48,8 @@ public class BasicOperation<T> implements BasicDao<T>{
 	 * 删除实体
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void delete(T entity) {
-		// TODO Auto-generated method stub
 		getSessionFactory().getCurrentSession().delete(entity);
 	}
 
@@ -59,8 +57,8 @@ public class BasicOperation<T> implements BasicDao<T>{
 	 * 根据Id删除实体
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void delete(Class<T> entityClazz, Serializable id) {
-		// TODO Auto-generated method stub
 		getSessionFactory().getCurrentSession().createQuery("delete" + entityClazz.getSimpleName() + "en where en.id = ?0")
 			.setParameter("0", id).executeUpdate();
 	}
@@ -69,8 +67,8 @@ public class BasicOperation<T> implements BasicDao<T>{
 	 * 加载所有实体
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<T> findAll(Class<T> entityClazz) {
-		// TODO Auto-generated method stub
 		return find("select en from " + entityClazz.getSimpleName() + " en");
 	}
 
@@ -78,8 +76,8 @@ public class BasicOperation<T> implements BasicDao<T>{
 	 * 获取实体总数
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public long findCount(Class<T> entityClazz) {
-		// TODO Auto-generated method stub
 		List<?> l = find("select count(*) from " + entityClazz.getSimpleName());
 		if(l != null && l.size() == 1){
 			return (Long)l.get(0);
@@ -106,7 +104,7 @@ public class BasicOperation<T> implements BasicDao<T>{
 	protected List<T> find(String hql, Object...params){
 		Query query = getSessionFactory().getCurrentSession().createQuery(hql);
 		for(int i=0, len=params.length;i<len; i++){
-			query.setParameter(i+" ", params[i]);
+			query.setParameter(i + "", params[i]);
 		}
 		return (List<T>)query.list();
 	}

@@ -1,26 +1,33 @@
 package com.competition.db.dao;
 
-
-
 import java.util.List;
 
 import com.competition.db.common.BasicDao;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserCollection;
 
-
 public interface UserCollectionDao extends BasicDao<UserCollection>{
-	//增
+	/**
+	 * 
+	 * @param collection
+	 * @param user			曾经持久化
+	 */
 	public void addCollectionByColObj(UserCollection collection,User user);
 	
-	//删
+	/**
+	 * 		
+	 * @param collection 	曾经持久化
+	 */
 	public void deleteCollectionByColObj(UserCollection collection);
 	
-	//查
+	/**
+	 * 
+	 * @param user 			必须是一个托管对象
+	 * @return
+	 */
 	public List<UserCollection> findAllCollectionByUsrObj(User user);
 	
 	//改
-	public void updateCollectionByColObj(UserCollection collection);
+//	public void updateCollectionByColObj(UserCollection collection);
 	
 }
-

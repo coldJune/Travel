@@ -1,15 +1,12 @@
 package com.competition.db.dao;
 
 
-
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import com.competition.db.common.BasicDao;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserAlbum;
-
-
 
 public interface UserAlbumDao extends BasicDao<UserAlbum>{
 	//增
@@ -19,9 +16,8 @@ public interface UserAlbumDao extends BasicDao<UserAlbum>{
 	public void deleteAlbumByAluObj(UserAlbum album);
 	
 	//查
-	public UserAlbum findAlbumByDate(Date date);
-	public List<UserAlbum> findAlbumsByUsrObj(User user);
-	
+	public List<UserAlbum> findAlbumByDate(Date date);
+		
 	//改
 	public void updateAlbumByAluObj(UserAlbum album);
 	

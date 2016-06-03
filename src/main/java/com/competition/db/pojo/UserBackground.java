@@ -1,9 +1,7 @@
 package com.competition.db.pojo;
 
-
-
-
-import java.sql.Date;
+import java.sql.Blob;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="user_background")
@@ -26,6 +26,7 @@ public class UserBackground{
 	
 	//背景添加时间
 	@Column(name="background_addedTime",nullable=true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date m_DBackgroundAddedTime;
 	
 	//对应的图片存储的URL
@@ -61,4 +62,3 @@ public class UserBackground{
 		this.m_UUser = m_UUser;
 	}
 }
-

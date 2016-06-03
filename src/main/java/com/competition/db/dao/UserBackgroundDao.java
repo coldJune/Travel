@@ -1,24 +1,31 @@
 package com.competition.db.dao;
 
-
-
 import java.util.List;
 
 import com.competition.db.common.BasicDao;
 import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserBackground;
 
-
 public interface UserBackgroundDao extends BasicDao<UserBackground>{
-	//增
+	/**
+	 * 
+	 * @param user User必须曾经持久化
+	 * @param background
+	 */
 	public void addBackgroundByUsrObj(User user,UserBackground background);
 	
-	//删
+	/**
+	 * 
+	 * @param background 必须曾经持久化
+	 */
 	public void deleteBackgroundByBakObj(UserBackground background);
 	
-	//查
+	/**
+	 * 
+	 * @param user 必须曾经持久化
+	 * @return
+	 */
 	public List<UserBackground> findAllBackgroundByUsrObj(User user);
 	
 	//改
 }
-

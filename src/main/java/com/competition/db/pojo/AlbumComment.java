@@ -1,6 +1,7 @@
 package com.competition.db.pojo;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="album_comment")
@@ -22,6 +25,7 @@ public class AlbumComment{
 	
 	//评论时间
 	@Column(name="comment_time",nullable=true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date m_DCommentTime;
 	
 	//评论内容

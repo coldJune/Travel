@@ -1,7 +1,7 @@
 package com.competition.db.pojo;
 
-
-import java.sql.Date;
+import java.sql.Blob;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -24,6 +26,7 @@ public class AlbumPhoto{
 	
 	//用户上传照片时间
 	@Column(name="photo_uploadTime",nullable=true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date m_DPhotoUploadTime;
 	
 	//照片内容
@@ -59,4 +62,3 @@ public class AlbumPhoto{
 		this.m_UA_Photo_UserAlbum = m_UA_Photo_UserAlbum;
 	}
 }
-

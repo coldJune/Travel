@@ -1,14 +1,10 @@
 package com.competition.db.dao;
 
-
 import java.util.List;
 
 import com.competition.db.common.BasicDao;
 
-
-
 public interface UserDao<User> extends BasicDao<User>{
-	//增加一个用户
 	/**
 	 * 
 	 * @param user
@@ -31,13 +27,22 @@ public interface UserDao<User> extends BasicDao<User>{
 	 */
 	public User findUserByName(String name);
 	
+	/**
+	 * 根据用户名和密码查找是否用户
+	 * @param user
+	 * @return
+	 */
 	public User findUserByNameAndPass(User user);
 	
-	//得到基本信息
-	
-	//更新一个用户的信息
+	/**
+	 * 
+	 * @param user
+	 */
 	public void updateUserByUsrObj(User user);
 	
-	//得到所用的用户
+	/**
+	 * 
+	 * @return
+	 */
 	public List<User> getAll();
 }

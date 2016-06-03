@@ -1,8 +1,6 @@
 package com.competition.db.pojo;
 
-
-
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="user_album")
@@ -28,6 +28,7 @@ public class UserAlbum{
 	
 	//创建时间
 	@Column(name="album_createdTime",nullable=true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date m_DAlbumCreatedTime;
 	
 	//赞次数
