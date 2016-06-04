@@ -25,7 +25,6 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="user")
 public class User{
-	
 	//主键
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -45,7 +44,6 @@ public class User{
 	private char m_cUserSex;
 	
 	//生日
-	
 	@Column(name="user_birth",nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date m_DUserBirth;
@@ -53,6 +51,10 @@ public class User{
 	//地址	
 	@Column(name="user_addr",nullable=true)
 	private String m_sUserAddr;
+	
+	//邮箱激活状况
+	@Column(name="user_mailStatus", nullable=true)
+	private Boolean m_bIsMailActivate;
 	
 	//个性签名
 	@Column(name="user_signature",nullable=true)
@@ -75,6 +77,7 @@ public class User{
 	
 	//用户头像
 	@Lob
+	@Column(name="user_icon", nullable=true)
 	private byte[] m_BUesrIcon;
 
 	public User(){

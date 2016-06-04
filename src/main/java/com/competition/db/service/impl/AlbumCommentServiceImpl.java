@@ -14,11 +14,11 @@ public class AlbumCommentServiceImpl implements AlbumCommentService {
 		this.albumCommentDao = albumCommentDao;
 	}
 
-	@Override
-	public void addCommentByAluObj(UserAlbum album) {
-		// TODO Auto-generated method stub
-		albumCommentDao.addCommentByAluObj(album);
-	}
+//	@Override
+//	public void addCommentByAluObj(UserAlbum album) {
+//		// TODO Auto-generated method stub
+//		albumCommentDao.addCommentByAluObj(album);
+//	}
 
 	@Override
 	public void deleteCommentByComObj(AlbumComment comment) {
@@ -36,6 +36,12 @@ public class AlbumCommentServiceImpl implements AlbumCommentService {
 	public void updateCommentByAluObj(AlbumComment album) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void addCommentByAluObj(UserAlbum album) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

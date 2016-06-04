@@ -7,20 +7,19 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.show_sql">true</property>
   	<property name="hibernate.format_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     
     <property name="connection.username">root</property>
     <property name="connection.password">root</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://localhost:3306/travel?useUnicode=true&amp;characterEncoding=UTF8</property>
     
+    <mapping class="com.competition.db.pojo.User"/>
+    <mapping class="com.competition.db.pojo.UserAlbum"/>
+    <mapping class="com.competition.db.pojo.UserBackground"/>
+ 	<mapping class="com.competition.db.pojo.UserCollection"/>
+    <mapping class="com.competition.db.pojo.AlbumComment"/>
+    <mapping class="com.competition.db.pojo.AlbumPhoto"/>
     
-    <mapping class="bbw.dao.pojo.User"/>
-    <mapping class="bbw.dao.pojo.UserAlbum"/>
-    <mapping class="bbw.dao.pojo.AlbumComment"/>
- 	<mapping class="bbw.dao.pojo.UserBackground"/>
- 	<mapping class="bbw.dao.pojo.UserCollection"/>
-    <mapping class="bbw.dao.pojo.AlbumPhoto"/>
-
  </session-factory>
 </hibernate-configuration>

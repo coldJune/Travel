@@ -26,17 +26,17 @@ public class UserAlbumServiceImpl implements UserAlbumService {
 		userAlbumDao.deleteAlbumByAluObj(album);
 	}
 
-	@Override
-	public UserAlbum findAlbumByDate(Date date) {
-		// TODO Auto-generated method stub
-		return userAlbumDao.findAlbumByDate(date);
-	}
-
-	@Override
-	public List<UserAlbum> findAlbumsByUsrObj(User user) {
-		// TODO Auto-generated method stub
-		return userAlbumDao.findAlbumsByUsrObj(user);
-	}
+//	@Override
+//	public UserAlbum findAlbumByDate(Date date) {
+//		// TODO Auto-generated method stub
+//		return userAlbumDao.findAlbumByDate(date);
+//	}
+//
+//	@Override
+//	public List<UserAlbum> findAlbumsByUsrObj(User user) {
+//		// TODO Auto-generated method stub
+//		return userAlbumDao.findAlbumsByUsrObj(user);
+//	}
 
 	@Override
 	public void updateAlbumByAluObj(UserAlbum album) {
@@ -46,6 +46,18 @@ public class UserAlbumServiceImpl implements UserAlbumService {
 
 	@Override
 	public List<UserAlbum> getAll(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserAlbum findAlbumByDate(Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserAlbum> findAlbumsByUsrObj(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
