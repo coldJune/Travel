@@ -6,11 +6,15 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
-		http://www.springframework.org/schema/p">
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 	<!-- 导入资源文件 -->
 	<context:property-placeholder location="classpath:db.properties"/>
 	<!-- 配置c3p0数据源 -->
@@ -53,26 +57,20 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 	</aop:config> -->
 	<!-- 配置dao实现类的bean -->
-		<bean id="userDaoImpl"
-			class="com.competition.db.user.dao.impl.UserDaoImpl">
-			<property name="sessionFactory" ref="sessionFactory"></property>
-		</bean>
-		
 		<bean id="daoTemplate" abstract="true" lazy-init="true"
 			p:sessionFactory-ref="sessionFactory"/>
 		<bean id="userDao"
-			class="com.competition.db.user.dao.impl.UserDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserDaoImpl" parent="daoTemplate"/>
 		<bean id="userAlbumDao" 
-			class="com.competition.db.useralbum.dao.impl.UserAlbumDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserAlbumDaoImpl" parent="daoTemplate"/>
 		<bean id="userCollectionDao"
-			class="com.competition.db.usercollection.dao.impl.UserCollectionDaoImpl"  parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserCollectionDaoImpl"  parent="daoTemplate"/>
 		<bean id="userBackgroundDao"
-			class="com.competition.db.userbackground.dao.impl.UserBackgroundDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.UserBackgroundDaoImpl" parent="daoTemplate"/>
 		<bean id="albumCommentDao"
-			class="com.competition.db.albumcomment.dao.impl.AlbumCommentDaoImpl" parent="daoTemplate"/>
+			class="com.competition.db.dao.impl.AlbumCommentDaoImpl" parent="daoTemplate"/>
 		<bean id="albumPhotoDao"
-			class="com.competition.db.albumphoto.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
-		
+			class="com.competition.db.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
 	<!-- 配置service实现类的bean -->
 	
 	
