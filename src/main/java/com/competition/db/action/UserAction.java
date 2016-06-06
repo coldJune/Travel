@@ -1,5 +1,10 @@
 package com.competition.db.action;
 
+import javax.management.ServiceNotFoundException;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.competition.db.pojo.User;
 import com.competition.db.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
@@ -54,7 +59,15 @@ public class UserAction extends ActionSupport {
 		return "userinfo";
 	}
 	
-	//public String regist() throws Exception{
+	public String regist() throws Exception{
+		us.register(user);
+		return "register";
+	}
+	public String activate() throws ServiceNotFoundException{
 		
-	//}
+		String email =ServletActionContext.getRequest().getParameter("email");
+		String validateCode=ServletActionContext.getRequest().getParameter("validateCode");
+		us.activate(email, validateCode);
+		return LOGIN;
+	}
 }

@@ -2,6 +2,8 @@ package com.competition.db.service;
 
 import java.util.List;
 
+import javax.management.ServiceNotFoundException;
+
 import com.competition.db.pojo.User;
 /**
  * 
@@ -15,5 +17,7 @@ public interface UserService {
 		public void addUser(User user);
 		public void updateUser(User user);
 		public List<User> getAll();
+		public void register(User user);
+		public void activate(String email,String validateCode) throws ServiceNotFoundException;
 		
 }
