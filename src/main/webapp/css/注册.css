@@ -1,0 +1,90 @@
+.bc-img {
+  background-image: url("../images/login_in/u417.jpg");
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-size: 100% 100%;
+}
+.box {
+  width: 100%;
+}
+.box .box-center {
+  width: 760px;
+  border: 1px dashed #000;
+  margin: 55px auto 0;
+  overflow: hidden;
+}
+.input-box {
+  margin: 31px 0 31px 50px;
+  font-size: 14px;
+  overflow: hidden;
+}
+.input-box .input-info {
+  float: left;
+  padding: 30px 35px;
+  margin-right: 50px;
+}
+.input-box .username,
+.input-box .userpw,
+.input-box .userpw-cf,
+.input-box .checkcode {
+  width: 300px;
+  margin-bottom: 10px;
+  outline: none;
+}
+.input-box .username-input,
+.input-box .userpw-input,
+.input-box .userpw-input-cf {
+  width: 290px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  height: 24px;
+  outline: none;
+}
+.input-box .checkcode-input {
+  height: 29px;
+  width: 96px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  outline: none;
+}
+.input-box .register-button {
+  display: block;
+  width: 138px;
+  height: 38px;
+  border: 1px solid #797979;
+  border-radius: 5px;
+  background: #fff;
+  margin-top: 20px;
+  outline: none;
+}
+.input-box .login-now {
+  height: 400px;
+  margin-top: 30px;
+  float: left;
+  border-left: 1px solid #797979;
+}
+.input-box .login-now .login-now-box {
+  width: 200px;
+  margin-left: 50px;
+}
+.input-box .login-now .login-now-box .title {
+  color: #5d5c5c;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #797979;
+}
+.input-box .login-now .login-now-box .title a:link {
+  color: #5d5c5c;
+}
+.input-box .login-now .login-now-box .title a:visited {
+  color: #5d5c5c;
+}
+.input-box .login-now .login-now-box .title a:hover {
+  color: #000;
+}
+.input-box .login-now .login-now-box .contact {
+  margin-top: 80px;
+  margin-left: 40px;
+}

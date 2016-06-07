@@ -1,0 +1,149 @@
+.head {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #fff;
+}
+.bodyer {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/首页/u45.jpg");
+  overflow: hidden;
+  margin-top: 62px;
+  min-height: 800px;
+}
+.bodyer .publish {
+  width: 660px;
+  height: 170px;
+  margin: 20px auto;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #fff;
+}
+.bodyer .publish textarea {
+  margin-left: 58px;
+  margin-top: 16px;
+  resize: none;
+  outline: none;
+  padding: 5px 5px;
+}
+.bodyer .publish .publish-up {
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  background: #ffb598;
+  border: none;
+  font-size: 14px;
+  float: right;
+  margin-top: 5px;
+  margin-right: 20px;
+  box-shadow: 3px 3px 5px 1px #afabaa;
+  outline: none;
+}
+.bodyer .show {
+  width: 660px;
+  padding: 0 10px;
+  margin: 50px auto 0;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+.bodyer .show .show-title {
+  overflow: hidden;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.bodyer .show .show-user {
+  height: 65px;
+  width: 65px;
+  box-sizing: border-box;
+  float: left;
+  overflow: hidden;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+.bodyer .show .show-user img {
+  height: 65px;
+  width: 65px;
+  float: left;
+}
+.bodyer .show .nt {
+  width: 50px;
+  float: left;
+  margin-left: 10px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.bodyer .show .name,
+.bodyer .show .time {
+  display: inline-block;
+  margin-top: 7px;
+}
+.bodyer .show .focus {
+  float: right;
+  width: 60px;
+  height: 36px;
+  border: 1px solid #ff9933;
+  background-color: #ff9933;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 16px;
+  margin-right: 10px;
+  box-shadow: 2px 2px 5px 1px #afabaa;
+  padding: 2px 6px;
+}
+.bodyer .show .futher {
+  float: right;
+  margin-top: 15px;
+}
+.bodyer .show .show-info li {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  margin-right: 12.66666667px;
+  margin-bottom: 10px;
+}
+.bodyer .show .show-info li:nth-child(4n) {
+  margin-right: 0;
+}
+.bodyer .show .show-location {
+  font-size: 14px;
+  border-bottom: 1px solid #000;
+}
+.bodyer .show .show-status {
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  position: relative;
+}
+.bodyer .show .show-status li img,
+.bodyer .show .show-status li span {
+  float: left;
+  font-size: 14px;
+}
+.bodyer .show .show-status li img {
+  width: 21px;
+  height: 21px;
+}
+.bodyer .show .show-status li span {
+  margin-top: 2.5px;
+  margin-left: 7px;
+}
+.bodyer .show .show-status li:nth-child(1) {
+  float: left;
+  margin-left: 30px;
+}
+.bodyer .show .show-status li:nth-child(3) {
+  float: right;
+  margin-right: 30px;
+}
+.bodyer .show .show-status li:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  margin-left: -13px;
+}

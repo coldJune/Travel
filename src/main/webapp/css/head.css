@@ -1,0 +1,64 @@
+.head {
+  height: 60px;
+  border: 1px solid #5d5c5c;
+  box-shadow: 10px 2px 10px 2px #4d4d4d;
+  z-index: 99;
+}
+.head .head-center {
+  width: 1002px;
+  height: 60px;
+  margin: 0 auto;
+}
+.head .head-center .logo {
+  width: 51px;
+  height: 40px;
+  margin-top: 10px;
+  float: left;
+}
+.head .head-center .logo-name {
+  font-size: 18px;
+  display: inline-block;
+  margin-top: 20px;
+  float: left;
+  margin-left: 1px;
+}
+.head .head-center .u39 {
+  width: 2px;
+  height: 40px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+.head .head-center .login {
+  float: left;
+  display: inline-block;
+  margin-top: 16px;
+  margin-left: 25px;
+}
+.head .head-center .login a {
+  font-size: 18px;
+  font-weight: 500;
+}
+.head .head-center .login a:link {
+  color: #000;
+}
+.head .head-center .tools {
+  float: right;
+  overflow: hidden;
+  height: 60px;
+  line-height: 60px;
+}
+.head .head-center .tools div,
+.head .head-center .tools img {
+  float: right;
+  font-size: 14px;
+  margin-left: 25px;
+}
+.head .head-center .tools .u39-copy {
+  margin-top: 10px;
+}
+.head .head-center .tools .u57 {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+}
