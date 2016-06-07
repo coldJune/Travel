@@ -10,11 +10,14 @@ public class UserAlbumAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 9131009632870656629L;
-	private User user;
-	private UserAlbum album;
-	private UserAlbumService uas;
-	private static  final String USERALBUM="useralbum";
 	
+	private User user;				//User从哪里来的？
+	
+	private UserAlbum album;
+	
+	private UserAlbumService uas;
+	
+	private static  final String USERALBUM="useralbum";
 	
 	public User getUser() {
 		return user;
@@ -45,11 +48,11 @@ public class UserAlbumAction extends ActionSupport{
 		this.uas = uas;
 	}
 
-/**
- * 添加相册
- * @return	useralbum  跳转到相册界面
- * @throws Exception
- */
+	/**
+	 * 添加相册
+	 * @return	useralbum  跳转到相册界面
+	 * @throws Exception
+	 */
 	public String addUserAlbum()throws Exception{
 		uas.addAlbumByUsrObj(user, album);
 		return USERALBUM;

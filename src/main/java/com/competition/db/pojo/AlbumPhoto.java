@@ -37,7 +37,7 @@ public class AlbumPhoto{
 	@ManyToOne(targetEntity=UserAlbum.class)
 	@JoinColumn(name="album_id",referencedColumnName="album_id")
 	private UserAlbum m_UA_Photo_UserAlbum;
-
+	
 	public Date getM_DPhotoUploadTime() {
 		return m_DPhotoUploadTime;
 	}

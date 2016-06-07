@@ -103,5 +103,9 @@
 		</bean>
 			
 	<!-- 配置action bean-->
+	<bean id="userAction"
+	class="com.competition.db.action.UserAction">
+		<property name="user" ref="userDao"></property>	
+	</bean>
 	
 </beans>

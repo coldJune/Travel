@@ -12,13 +12,13 @@ public interface UserBackgroundDao extends BasicDao<UserBackground>{
 	 * @param user User必须曾经持久化
 	 * @param background
 	 */
-	public void addBackgroundByUsrObj(User user,UserBackground background);
+	public boolean addBackgroundByUsrObj(User user,UserBackground background);
 	
 	/**
 	 * 
 	 * @param background 必须曾经持久化
 	 */
-	public void deleteBackgroundByBakObj(UserBackground background);
+	public boolean deleteBackgroundByBakObj(UserBackground background);
 	
 	/**
 	 * 

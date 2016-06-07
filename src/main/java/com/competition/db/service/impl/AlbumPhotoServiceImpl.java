@@ -1,5 +1,6 @@
 package com.competition.db.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import com.competition.db.dao.AlbumPhotoDao;
@@ -8,7 +9,9 @@ import com.competition.db.pojo.UserAlbum;
 import com.competition.db.service.AlbumPhotoService;
 
 public class AlbumPhotoServiceImpl implements AlbumPhotoService {
+	
 	private AlbumPhotoDao albumPhotoDao;
+	
 	public void setAlbumPhotoDao(AlbumPhotoDao albumPhotoDao) {
 		this.albumPhotoDao = albumPhotoDao;
 	}
@@ -35,6 +38,13 @@ public class AlbumPhotoServiceImpl implements AlbumPhotoService {
 	public void updatePhotoByAluObj(UserAlbum album, AlbumPhoto photo) {
 		// TODO Auto-generated method stub
 		albumPhotoDao.updatePhotoByAluObj(album, photo);
+	}
+
+	@Override
+	public String savePhoto(UserAlbum album, AlbumPhoto photo, File file) {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 
 }
