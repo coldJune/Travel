@@ -8,10 +8,16 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer;
 
 import com.competition.db.dao.AlbumPhotoDao;
 import com.competition.db.dao.UserAlbumDao;
 import com.competition.db.pojo.AlbumPhoto;
+import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserAlbum;
 import com.competition.db.service.AlbumPhotoService;
 import com.competition.db.service.UserAlbumService;
@@ -45,10 +51,21 @@ public class AlbumPhotoAction extends ActionSupport {
 	public static String UPLOAD_FAILURE = "upload_failure";
 	//
 	public static String UPLOAD_NO_LOCATION = "upload_no_location";
+	private User user;
 	
 	public List<File> getImages() {
 		return images;
 	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser() {
+		this.user = (User)ServletActionContext.getServletContext().getAttribute("user");
+	}
+
+	private Map<String, Object> map = new HashMap<String,Object>();
+	
 
 	public void setImages(List<File> images) {
 		this.images = images;
