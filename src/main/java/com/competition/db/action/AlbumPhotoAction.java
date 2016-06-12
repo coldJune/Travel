@@ -4,28 +4,27 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer;
 
 import com.competition.db.dao.AlbumPhotoDao;
 import com.competition.db.dao.UserAlbumDao;
 import com.competition.db.pojo.AlbumPhoto;
-import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserAlbum;
 import com.competition.db.service.AlbumPhotoService;
 import com.competition.db.service.UserAlbumService;
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.Tag;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AlbumPhotoAction extends ActionSupport {
-	//
-	private File upload;
-	//
-	private String uploadContentType;
-	//
-	private String uploadFileName;
+	//所有要上传的文件，即图片
+	private List<File> images;
 	//
 	private String savePath;
 	
@@ -36,31 +35,45 @@ public class AlbumPhotoAction extends ActionSupport {
 	private UserAlbumService uas;
 	
 	private AlbumPhotoService aps;
-	private User user;
+	//用于记录上传成功的照片数
+	public int count=0;
+	//全部上传成功
+	public static String UPLOAD_FINISH_ALL = "upload_finish_all";
+	//部分上传成功
+	public static String UPLOAD_FINISH_NOT_ALL = "upload_finish_not_all";
+	//上传失败
+	public static String UPLOAD_FAILURE = "upload_failure";
+	//
+	public static String UPLOAD_NO_LOCATION = "upload_no_location";
 	
-	public User getUser() {
-		return user;
+	public List<File> getImages() {
+		return images;
 	}
 
-	public void setUser() {
-		this.user = (User)ServletActionContext.getServletContext().getAttribute("user");
+	public void setImages(List<File> images) {
+		this.images = images;
 	}
 
-	private Map<String, Object> map = new HashMap<String,Object>();
-	
-	
-	public File getUpload() {
-		return upload;
+	public UserAlbum getAlbum() {
+		return album;
 	}
 
-	public void setUpload(File upload) {
-		this.upload = upload;
+	public void setAlbum(UserAlbum album) {
+		this.album = album;
+	}
+
+	public AlbumPhoto getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(AlbumPhoto photo) {
+		this.photo = photo;
 	}
 
 	public String getSavePath() {
-		return savePath;
+		return ServletActionContext.getServletContext().getRealPath(savePath);
 	}
-
+	//从Struts.xml注入
 	public void setSavePath(String savePath) {
 		this.savePath = savePath;
 	}
@@ -87,30 +100,88 @@ public class AlbumPhotoAction extends ActionSupport {
 	private static final long serialVersionUID = 5141822686342883246L;
 
 	/**
-	 * 尝试上传单张照片
+	 * 上传照片
 	 * @return 无法创建文件则返回错误提示，
 	 */
-	public String uploadPhoto(){
+	public String uploadPhotos(){
+		boolean isSave=false;
+		for(int i=0; i<images.size(); i++){
+			isSave = savePhoto(i);
+			if(isSave == true){
+				count++;
+			}
+		}
+		if(count == images.size()){
+			return UPLOAD_FINISH_ALL;
+		}else if(count !=images.size() && count >0){
+			return UPLOAD_FINISH_NOT_ALL;
+		}else{
+			return UPLOAD_FAILURE;
+		}
+	}
+	/**
+	 * 上传图片
+	 * @return
+	 */
+	public boolean savePhoto(int i){
 		try{
-
-			String savePath = getSavePath() + File.separator + (uas.getPhotoNum(album)+1);	//如何把savePath封装到AlbumPhoto中
-			File file = new File(savePath);
-			
-			if(!file.exists()){
-				return ERROR;
+			File inFile = images.get(i);
+			FileInputStream fis = new FileInputStream(images.get(i));
+			String inFileName = inFile.getName();
+			//提取后缀
+			String prefix = inFileName.substring(inFileName.lastIndexOf(".") + 1);
+			//检查后缀
+			if(prefix=="png" || prefix == "jpeg"){
+				String savePath = getSavePath() + File.separator + (uas.getPhotoNum(album)+1) + prefix;	//如何把savePath封装到AlbumPhoto中
+				File file = new File(savePath);
+				if(!file.exists()){
+					return false;
+				}
+				FileOutputStream fos = new FileOutputStream(file);
+				byte[] buffer = new byte[1024];
+				int len=0;
+				while((len = fis.read())>0){
+					fos.write(buffer,0,len);
+				}
+				//album需要曾经持久化
+				aps.addPhotoByAluObj(album, photo);
 			}
-			FileOutputStream fos = new FileOutputStream(file);
-			FileInputStream fis = new FileInputStream(getUpload());
-			byte[] buffer = new byte[1024];
-			int len=0;
-			while((len = fis.read())>0){
-				fos.write(buffer,0,len);
-			}
-			return SUCCESS;
+			return true;
 		}catch(Exception e){
-			return ERROR;
+			return false;
 		}
 	}
 	
+	public String getLocation(File file){
+		String latitude =null;
+		String longtitude = null;
+		try {
+			Metadata metadata = ImageMetadataReader.readMetadata(file);
+			for(Directory directory:metadata.getDirectories()){
+				for(Tag tag:directory.getTags()){
+					String tagName = tag.getTagName();
+					String desc = tag.getDescription();
+					if(tagName.equals("GPS Latitude")){
+						latitude = desc;
+					}
+					if(tagName.equals("GPS Longitude")){
+						longtitude = desc;
+					}
+				}
+			}
+			if(latitude != null && longtitude != null){
+				return latitude + "," + longtitude;
+			}
+			else{
+				return UPLOAD_NO_LOCATION;
+			}
+		} catch (ImageProcessingException e) {
+			e.printStackTrace();
+			return UPLOAD_NO_LOCATION;
+		} catch (IOException e) {
+			e.printStackTrace();		
+			return UPLOAD_FAILURE;
 
+		}
+	}
 }
