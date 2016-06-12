@@ -11,7 +11,7 @@ import com.competition.db.pojo.UserAlbum;
  *@date 2016/5/28
  */
 public interface UserAlbumService {
-	//添加相册
+		//添加相册
 		public void addAlbumByUsrObj(User user,UserAlbum album);
 
 		//删除相册
@@ -19,8 +19,12 @@ public interface UserAlbumService {
 		
 		//通过日期查看相册
 		public UserAlbum findAlbumByDate(Date date);
+		
 		//查看用户所有相册
 		public List<UserAlbum> findAlbumsByUsrObj(User user);
+		
+		//获取相册中相片的数量
+		public int getPhotoNum(UserAlbum album);
 		
 		//修改相册
 		public void updateAlbumByAluObj(UserAlbum album);

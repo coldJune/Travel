@@ -1,0 +1,161 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+header{
+	padding:20px;
+	height:80px;
+	border-bottom:1px solid black;
+}
+#logo{
+	float:left;
+	width:230px;
+	padding-left:40px;
+}
+#GoTo{
+	padding:20px;
+	text-align: center;
+	font-size: 30px;
+	border-right:1px solid black;
+	position: relative;
+	bottom:30px;
+
+}
+#setting{
+	float: left;
+	padding-left:40px;
+	font-size: 30px;
+	padding:23px;
+}
+
+#table_out_border{
+	margin:40px auto;
+	padding:40px;
+	width:870px;
+	height:830px;
+	border:1px solid black;
+	border-radius: 1%;
+	box-shadow: 10px 0px 5px #888888;;
+}
+
+#table_in_border{
+	border:1px solid black;
+	height:750px;
+}
+#table_left{
+	font-size:15px;
+	width:190px;
+	height:750px;
+	border-right:1px solid black;
+	float:left;
+}
+#table_left li{
+	list-style-type:none;
+	text-align: center;
+	padding:15px 0px; 
+	border-bottom: 1px solid black;
+	cursor:pointer;
+}
+#table_left li:hover{
+	cursor:hand;
+}
+
+/*我的基本信息*/
+#table_right{
+	width:677px;
+	height:750px;
+	float:left;
+}
+h3{
+	padding:12px 50px;
+	border-bottom:1px solid black;
+}
+
+#nickname{
+	margin-top:30px;
+}
+#nickname input{
+	height:30px;
+	width:200px;
+}
+label{
+	padding-left:50px;
+}
+#user_id{
+	margin-top:30px;
+}
+#personality{
+	margin-top:60px;
+}
+#personality label{
+	position: relative;
+	bottom:90px;
+}
+#personality textarea{
+	resize:both;
+    overflow:auto;
+	width:500px;
+	height:100px;
+}
+#sex{
+	margin-top:30px;
+}
+#sex span{
+	padding:0px 40px 0px 0px;
+}
+#birth_date{
+	margin-top:60px;
+}
+#birth_date select{
+	width:100px;
+	height:25px;
+}
+
+#address{
+	margin-top:60px;
+}
+#address select{
+	width:100px;
+	height:25px;
+}
+
+/*我的头像*/
+#personal_logo{
+	width:180px;
+	height:180px;
+	border:1px solid black;
+	border-radius: 50%;
+	margin:60px auto;
+	overflow: hidden;
+}
+
+#change_logo{
+	width:150px;
+	padding: 10px 0px;
+	text-align: center;
+	margin:0px auto;
+	border:1px solid black;
+	border-radius: 5%;
+	cursor: pointer;
+}
+#recommend{
+	padding: 0px 40px;
+}
+.recommend_logo{
+	width:100px;
+	height: 100px;
+	border-radius: 100%;
+	margin:20px;
+	border:1px solid black;
+	display: inline-block;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#button{
+	width:80px;
+	padding:10px;
+	background: yellow;
+	text-align: center;
+	margin:0px auto;
+}

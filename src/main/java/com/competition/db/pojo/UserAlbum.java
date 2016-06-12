@@ -60,6 +60,9 @@ public class UserAlbum{
 	@OneToMany(targetEntity=AlbumPhoto.class, mappedBy="m_UA_Photo_UserAlbum")
 	private Set<AlbumPhoto> m_UPUserPhotos = new HashSet<>();
 	
+	@Column(name="album_photosNum")
+	private int m_iPhotoNum=0;
+	
 	public Date getM_DAlbumCreatedTime() {
 		return m_DAlbumCreatedTime;
 	}
@@ -122,5 +125,13 @@ public class UserAlbum{
 
 	public void setM_UPUserPhotos(Set<AlbumPhoto> m_UPUserPhotos) {
 		this.m_UPUserPhotos = m_UPUserPhotos;
+	}
+
+	public int getM_iPhotoNum() {
+		return m_iPhotoNum;
+	}
+
+	public void setM_iPhotoNum(int m_iPhotoNum) {
+		this.m_iPhotoNum = m_iPhotoNum;
 	}
 }

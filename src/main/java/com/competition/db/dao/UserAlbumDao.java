@@ -10,16 +10,22 @@ import com.competition.db.pojo.UserAlbum;
 
 public interface UserAlbumDao extends BasicDao<UserAlbum>{
 	//增
-	public void addAlbumByUsrObj(User user,UserAlbum album);
+	public boolean addAlbumByUsrObj(User user,UserAlbum album);
 
 	//删
-	public void deleteAlbumByAluObj(UserAlbum album);
+	public boolean deleteAlbumByAluObj(UserAlbum album);
 	
 	//查
 	public List<UserAlbum> findAlbumByDate(Date date);
+	/**
+	 * 查询Album中的Photo数量
+	 * @param album
+	 * @return
+	 */
+	public int findNumOfAlbumPhoto(UserAlbum album);
 		
 	//改
-	public void updateAlbumByAluObj(UserAlbum album);
+	public boolean updateAlbumByAluObj(UserAlbum album);
 	
 	public List<UserAlbum> getAll(User user);
 }

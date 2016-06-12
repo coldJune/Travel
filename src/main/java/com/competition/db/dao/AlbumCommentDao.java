@@ -14,13 +14,13 @@ public interface AlbumCommentDao extends BasicDao<AlbumComment>{
 	 * 应用场景：当用户新添加一天评论时......
 	 * @param album必须曾经持久化
 	 */
-	public void addCommentByAluObj(UserAlbum album,AlbumComment comment);
+	public boolean addCommentByAluObj(UserAlbum album,AlbumComment comment);
 	
 	/**
 	 * 
 	 * @param comment必须曾经持久化
 	 */
-	public void deleteCommentByComObj(AlbumComment comment);
+	public boolean deleteCommentByComObj(AlbumComment comment);
 	
 	/**
 	 * 

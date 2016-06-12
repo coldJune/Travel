@@ -56,6 +56,12 @@ public class UserAlbumDaoImpl extends BasicOperation<UserAlbum> implements UserA
 		return albums_list;
 	}
 
+	@Override
+	public int findNumOfAlbumPhoto(UserAlbum album) {
+		// TODO Auto-generated method stub
+		return album.getM_iPhotoNum();
+	}
+
 	/**
 	 * 根据User对象找到所有的相册
 	 * 

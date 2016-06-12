@@ -9,7 +9,15 @@
     		 <action name="emp-*" class="employeeAction" method="{1}">
     			<result name="list">emp/emp-list.jsp</result>
     		</action>
-    		
     	</package>
-    	
+    	<package name="user" namespace="/user" extends="struts-default">
+    		<action name="logiin" class="userAction" method="login">
+    			<result name="login"></result>
+    		</action>
+    	</package>
+    	<package name="albumPhoto" extends="struts-default">
+    		<action name="uploadPhotos" class="com.competition.db.action.AlbumPhotoAction" method="uploadPhotos">
+    			<param name="savePath">/</param>
+    		</action>
+    	</package>
     </struts>

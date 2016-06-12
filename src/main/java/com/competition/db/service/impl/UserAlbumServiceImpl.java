@@ -62,4 +62,10 @@ public class UserAlbumServiceImpl implements UserAlbumService {
 		return null;
 	}
 
+	@Override
+	public int getPhotoNum(UserAlbum album) {
+		// TODO Auto-generated method stub
+		return userAlbumDao.findNumOfAlbumPhoto(album);
+	}
+
 }
