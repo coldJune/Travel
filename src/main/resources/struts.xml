@@ -25,4 +25,11 @@
     			<param name="savePath">/src/main/resources/UserPhotos</param>
     		</action>
     	</package>
+    	
+    	<!-- 测试AlbumPhotoAction使用 -->
+    	<package name="lee" extends="struts-default">
+    		<action name="upload" class="com.competition.db.action.AlbumPhotoAction" method="uploadFiles">
+    			
+    		</action>
+    	</package>
     </struts>
