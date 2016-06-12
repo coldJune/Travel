@@ -90,6 +90,12 @@ public class User{
 	@Lob
 	@Column(name="user_icon", nullable=true)
 	private byte[] m_BUesrIcon;
+	@Column(name="user_validateCode",nullable=true)
+	private String validateCode;
+	@Column(name="user_registerTime",nullable=true)
+	private Date registerTime;
+	@Column(name="user_lastActivateTime",nullable=true)
+	private Date lastActivateTime;
 
 	public User(){
 		
@@ -143,7 +149,42 @@ public class User{
 	public Date getM_DUserBirth() {
 		return m_DUserBirth;
 	}
+	public Boolean getM_bIsMailActivate() {
+		return m_bIsMailActivate;
+	}
 
+	public void setM_bIsMailActivate(Boolean m_bIsMailActivate) {
+		this.m_bIsMailActivate = m_bIsMailActivate;
+	}
+
+	public String getValidateCode() {
+		return validateCode;
+	}
+
+	public void setValidateCode(String validateCode) {
+		this.validateCode = validateCode;
+	}
+
+
+	
+	public Date getRegisterTime() {
+		return registerTime;
+	}
+
+	public void setRegisterTime(Date registerTime) {
+		this.registerTime = registerTime;
+	}
+
+	public Date getLastActivateTime() {
+		Calendar cl =Calendar.getInstance();
+		cl.setTime(registerTime);
+		cl.add(Calendar.DATE,2);
+		return cl.getTime();
+	}
+
+	public void setLastActivateTime(Date lastActivateTime) {
+		this.lastActivateTime = lastActivateTime;
+	}
 	public void setM_DUserBirth(Date m_DUserBirth) {
 		this.m_DUserBirth = m_DUserBirth;
 	}

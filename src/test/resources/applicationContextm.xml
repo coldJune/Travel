@@ -52,11 +52,10 @@
 		</tx:attributes>
 	</tx:advice>
 	<!-- 配置事务的契入点，再把事务属性和事务切入点关联起来 -->
-	<aop:config>
-		<aop:pointcut expression="execution(* com.competition.db.service.impl.*.*(..))" id="txPointCut"/>
+	<!-- <aop:config>
+		<aop:pointcut expression="execution(* com.jun.ssh.service.*.*(..))" id="txPointCut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
-	</aop:config>
-	
+	</aop:config> -->
 	<!-- 配置dao实现类的bean -->
 		<bean id="daoTemplate" abstract="true" lazy-init="true"
 			p:sessionFactory-ref="sessionFactory"/>
@@ -72,37 +71,9 @@
 			class="com.competition.db.dao.impl.AlbumCommentDaoImpl" parent="daoTemplate"/>
 		<bean id="albumPhotoDao"
 			class="com.competition.db.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
-			
 	<!-- 配置service实现类的bean -->
-		<bean id="us"
-			class="com.competition.db.service.impl.UserServiceImpl"/>
-		<bean id="ucs"
-			class="com.competition.db.service.impl.UserCollectionServiceImpl"/>
-		<bean id="ubs"
-			class="com.competition.db.service.impl.UserBackgroundServiceImpl"/>
-		<bean id="uas"
-			class="com.competition.db.service.impl.UserAlbumServiceImpl"/>
-		<bean id="aps"
-			class="com.competition.db.service.impl.AlbumPhotoServiceImpl"/>
-		<bean id="acs"
-			class="com.competition.db.service.impl.AlbumCommentServiceImpl"/>
+	
+	
 	<!-- 配置action bean-->
-		<bean id="albumCommentAction" class="com.competition.db.action.AlbumCommentAction"
-			scope="prototype" p:acs-ref="acs"/>
-			
-		<bean id="albumPhotoAction" class="com.competition.db.action.AlbumPhotoAction">
-			<property name="uas"  ref="uas"/>
-			<property name="aps" ref="aps"/>
-		</bean>
-			
-			
-		<bean id="userAction" class="com.competition.db.action.UserAction"
-			scope="prototype" p:uas-ref="uas"/>
-			
-			
-		<!-- <bean id="userBackgroundAction" class="com.competition.db.action.UserBackgroundAction"
-			scope="prototype" p:ms-ref="userBackgroundDao"/> -->
-		
-		<bean id="userCollectionAction" class="com.competition.db.action.UserCollectionAction"
-			scope="prototype" p:ucs-ref="ucs"/>
+	
 </beans>

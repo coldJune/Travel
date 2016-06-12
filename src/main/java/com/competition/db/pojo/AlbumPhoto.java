@@ -24,10 +24,6 @@ public class AlbumPhoto{
 	@Column(name="photo_id",nullable=false)
 	private int m_iUserPhotoId;
 	
-//	//照片名称
-//	@Column(name="photo_name",nullable=true)
-//	private String photoName;
-	
 	//用户上传照片时间
 	@Column(name="photo_uploadTime",nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
