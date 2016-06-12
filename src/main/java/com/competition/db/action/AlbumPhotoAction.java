@@ -4,10 +4,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer;
 
 import com.competition.db.dao.AlbumPhotoDao;
 import com.competition.db.dao.UserAlbumDao;
 import com.competition.db.pojo.AlbumPhoto;
+import com.competition.db.pojo.User;
 import com.competition.db.pojo.UserAlbum;
 import com.competition.db.service.AlbumPhotoService;
 import com.competition.db.service.UserAlbumService;
@@ -30,8 +36,17 @@ public class AlbumPhotoAction extends ActionSupport {
 	private UserAlbumService uas;
 	
 	private AlbumPhotoService aps;
+	private User user;
 	
-	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser() {
+		this.user = (User)ServletActionContext.getServletContext().getAttribute("user");
+	}
+
+	private Map<String, Object> map = new HashMap<String,Object>();
 	
 	
 	public File getUpload() {
@@ -96,4 +111,6 @@ public class AlbumPhotoAction extends ActionSupport {
 			return ERROR;
 		}
 	}
+	
+
 }

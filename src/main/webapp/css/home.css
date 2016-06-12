@@ -1,0 +1,208 @@
+.head {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #fff;
+}
+.bodyer {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/首页/u45.jpg");
+  overflow: hidden;
+  margin-top: 62px;
+  min-height: 800px;
+}
+.bodyer .publish {
+  width: 660px;
+  margin: 20px auto;
+  border: 1px solid #c7e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+.bodyer .publish .up-container {
+  border-bottom: 1px solid #c7e5eb;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.bodyer .publish .words {
+  width: 600px;
+  height: 60px;
+  resize: none;
+  outline: none;
+  padding: 5px 5px;
+  border: none;
+  float: left;
+}
+.bodyer .publish .up {
+  float: left;
+  width: 48px;
+  height: 70px;
+  background: #ddedf0;
+  cursor: pointer;
+}
+.bodyer .publish .up img {
+  width: 30px;
+  height: 24px;
+  margin-left: 9px;
+  margin-top: 23px;
+}
+.bodyer .publish .img-container {
+  overflow: hidden;
+}
+.bodyer .publish .img-container .img-info {
+  margin-left: 10px;
+}
+.bodyer .publish .img-container .img-info .delete {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+  position: absolute;
+  background: rgba(192, 192, 192, 0.7);
+  top: 0;
+  left: 0;
+  display: none;
+  cursor: pointer;
+  color: #fff;
+}
+.bodyer .publish .img-container .img-info img {
+  width: 150px;
+  height: 150px;
+}
+.bodyer .publish .img-container .img-info li {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  margin-right: 12.66666667px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.bodyer .publish .img-container .img-info li:nth-child(4n) {
+  margin-right: 0;
+}
+.bodyer .publish .publish-up {
+  width: 77px;
+  height: 30px;
+  line-height: 30px;
+  background: #5ccfe6;
+  border: 1px solid #47c3d6;
+  font-size: 14px;
+  color: #fff;
+  float: right;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  padding: 0;
+  outline: none;
+}
+.bodyer .show {
+  width: 660px;
+  padding: 0 10px;
+  margin: 50px auto 0;
+  border: 1px solid #c7e5eb;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+.bodyer .show .show-title {
+  overflow: hidden;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.bodyer .show .show-user {
+  height: 65px;
+  width: 65px;
+  box-sizing: border-box;
+  float: left;
+  overflow: hidden;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+.bodyer .show .show-user img {
+  height: 65px;
+  width: 65px;
+  float: left;
+}
+.bodyer .show .nt {
+  width: 50px;
+  float: left;
+  margin-left: 10px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.bodyer .show .name,
+.bodyer .show .time {
+  display: inline-block;
+  margin-top: 7px;
+}
+.bodyer .show .focus {
+  float: right;
+  width: 60px;
+  height: 36px;
+  border: 1px solid #ff9933;
+  background-color: #ff9933;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 16px;
+  margin-right: 10px;
+  box-shadow: 2px 2px 5px 1px #afabaa;
+  padding: 2px 6px;
+}
+.bodyer .show .futher {
+  float: right;
+  margin-top: 15px;
+}
+.bodyer .show .show-info li {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  margin-right: 12.66666667px;
+  margin-bottom: 10px;
+}
+.bodyer .show .show-info li:nth-child(4n) {
+  margin-right: 0;
+}
+.bodyer .show .show-location {
+  font-size: 14px;
+  border-bottom: 1px solid #000;
+}
+.bodyer .show .show-status {
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  position: relative;
+}
+.bodyer .show .show-status li img,
+.bodyer .show .show-status li span {
+  float: left;
+  font-size: 14px;
+}
+.bodyer .show .show-status li img {
+  width: 21px;
+  height: 21px;
+}
+.bodyer .show .show-status li span {
+  margin-top: 2.5px;
+  margin-left: 7px;
+}
+.bodyer .show .show-status li:nth-child(1) {
+  float: left;
+  margin-left: 30px;
+}
+.bodyer .show .show-status li:nth-child(3) {
+  float: right;
+  margin-right: 30px;
+}
+.bodyer .show .show-status li:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  margin-left: -13px;
+}

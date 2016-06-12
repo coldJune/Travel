@@ -1,0 +1,7 @@
+.container {
+  width: 100%;
+}
+.container .container-center {
+  width: 1156px;
+  margin: 0 auto;
+}

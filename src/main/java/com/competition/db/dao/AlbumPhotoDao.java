@@ -13,13 +13,13 @@ public interface AlbumPhotoDao extends BasicDao<AlbumPhoto>{
 	 * @param album 曾今持久化
 	 * @param photo
 	 */
-	public boolean addPhotoByAluObj(UserAlbum album,AlbumPhoto photo);
+	public void addPhotoByAluObj(UserAlbum album,AlbumPhoto photo);
 
 	/**
 	 * 
 	 * @param photo 曾经持久化
 	 */
-	public boolean deletePhotoByPhtObj(AlbumPhoto photo);
+	public void deletePhotoByPhtObj(AlbumPhoto photo);
 	
 	//
 	public List<AlbumPhoto> findAllPhotoByAluObj(UserAlbum album);
@@ -29,6 +29,6 @@ public interface AlbumPhotoDao extends BasicDao<AlbumPhoto>{
 	 * @param album 曾经持久化
 	 * @param photo 
 	 */
-	public boolean updatePhotoByAluObj(UserAlbum album,AlbumPhoto photo);
+	public void updatePhotoByAluObj(UserAlbum album,AlbumPhoto photo);
 	
 }

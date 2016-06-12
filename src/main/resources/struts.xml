@@ -5,19 +5,19 @@
     <struts>
     	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
     	<constant name="struts.devMode" value="true"></constant>
-    	<package name="default" namespace="/" extends="struts-default">
+    	<!--  <package name="default" namespace="/" extends="struts-default">
     		 <action name="emp-*" class="employeeAction" method="{1}">
     			<result name="list">emp/emp-list.jsp</result>
     		</action>
     	</package>
-    	<package name="user" namespace="/user" extends="struts-default">
-    		<action name="logiin" class="userAction" method="login">
-    			<result name="login"></result>
+    	-->
+    	<package name="user" namespace="/user" extends="struts-default,json-default">
+    		<action name="loginUserAction" class="userAction" method="login">
+    			<result name="login" type="json">loginresult</result>
+    		</action>
+    		<action name="registeUserAction" class="userAction" method="regist">
+    			<result name="fail" type="json">registResult</result>
     		</action>
     	</package>
-    	<package name="albumPhoto" extends="struts-default">
-    		<action name="uploadPhotos" class="com.competition.db.action.AlbumPhotoAction" method="uploadPhotos">
-    			<param name="savePath">/</param>
-    		</action>
-    	</package>
+  
     </struts>
