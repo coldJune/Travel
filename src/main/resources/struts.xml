@@ -17,7 +17,7 @@
     	</package>
     	<package name="albumPhoto" extends="struts-default">
     		<action name="uploadPhotos" class="com.competition.db.action.AlbumPhotoAction" method="uploadPhotos">
-    			<param name="savePath">/</param>
+    			<param name="savePath">/src/main/resources/UserPhotos</param>
     		</action>
     	</package>
     </struts>

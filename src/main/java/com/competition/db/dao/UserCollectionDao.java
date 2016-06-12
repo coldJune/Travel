@@ -12,13 +12,13 @@ public interface UserCollectionDao extends BasicDao<UserCollection>{
 	 * @param collection
 	 * @param user			曾经持久化
 	 */
-	public boolean addCollectionByColObj(UserCollection collection,User user);
+	public void addCollectionByColObj(UserCollection collection,User user);
 	
 	/**
 	 * 		
 	 * @param collection 	曾经持久化
 	 */
-	public boolean deleteCollectionByColObj(UserCollection collection);
+	public void deleteCollectionByColObj(UserCollection collection);
 	
 	/**
 	 * 

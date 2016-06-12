@@ -72,8 +72,39 @@
 		<bean id="albumPhotoDao"
 			class="com.competition.db.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
 	<!-- 配置service实现类的bean -->
-	
-	
+		<bean id="us"
+			class="com.competition.db.service.impl.UserServiceImpl"/>
+		<bean id="ucs"
+			class="com.competition.db.service.impl.UserCollectionServiceImpl"/>
+		<bean id="ubs"
+			class="com.competition.db.service.impl.UserBackgroundServiceImpl"/>
+		<bean id="uas"
+			class="com.competition.db.service.impl.UserAlbumServiceImpl"/>
+		<bean id="aps"
+			class="com.competition.db.service.impl.AlbumPhotoServiceImpl"/>
+		<bean id="acs"
+			class="com.competition.db.service.impl.AlbumCommentServiceImpl"/>
 	<!-- 配置action bean-->
-	
+		<bean id="albumCommentAction" class="com.competition.db.action.AlbumCommentAction"
+			scope="prototype" p:ms-ref="acs"/>
+			
+			
+			
+		<!-- <bean id="albumPhotoAction" class="com.competition.db.action.AlbumPhotoAction"
+			scope="prototype" p:ms-ref="" -->
+			
+			
+			
+		<bean id="userAction" class="com.competition.db.action.UserAction"
+			scope="prototype" p:ms-ref="uas"/>
+			
+			
+			
+		<!-- <bean id="userBackgroundAction" class="com.competition.db.action.UserBackgroundAction"
+			scope="prototype" p:ms-ref="userBackgroundDao"/> -->
+			
+			
+			
+		<bean id="userCollectionAction" class="com.competition.db.action.UserCollectionAction"
+			scope="prototype" p:ms-ref="ucs"/>
 </beans>

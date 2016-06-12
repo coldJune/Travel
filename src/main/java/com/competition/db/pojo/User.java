@@ -168,5 +168,4 @@ public class User{
 	public void setM_BUesrIcon(byte[] m_BUesrIcon) {
 		this.m_BUesrIcon = m_BUesrIcon;
 	}
-
 }
