@@ -19,5 +19,4 @@ public interface UserService {
 		public List<User> getAll();
 		public void register(User user);
 		public void activate(String email,String validateCode) throws ServiceNotFoundException;
-		
 }

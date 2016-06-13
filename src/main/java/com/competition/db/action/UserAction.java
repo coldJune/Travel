@@ -26,31 +26,34 @@ public class UserAction extends ActionSupport {
 	private User user;
 	private UserService us;
 	private String loginresult;
-	private String validateC;
-	private String registResult;
-	public String getValidateC() {
-		return validateC;
+	private String registeresult;
+	
+public String getRegisteresult() {
+		return registeresult;
 	}
 
-	public void setValidateC(String validateC) {
-		this.validateC = validateC;
+	public void setRegisteresult(String registeresult) {
+		this.registeresult = registeresult;
 	}
-
-	public String getRegistResult() {
-		return registResult;
-	}
-
-	public void setRegistResult(String registResult) {
-		this.registResult = registResult;
-	}
-	private static Map<String, Object> map = new HashMap<String,Object>();
-	public String getvalidateC() {
-		return validateC;
-	}
-
-	public void setvalidateC(String validateC) {
-		this.validateC = validateC;
-	}
+	//	private String validateC;//产生的验证码
+//	private String checkNameResult;//名字匹配结果
+//	private String codeResult;//验证码匹配结果
+//	public String getValidateC() {
+//		return validateC;
+//	}
+//
+//	public void setValidateC(String validateC) {
+//		this.validateC = validateC;
+//	}
+//
+	private static Map<String, Object> map ;
+//	public String getvalidateC() {
+//		return validateC;
+//	}
+//
+//	public void setvalidateC(String validateC) {
+//		this.validateC = validateC;
+//	}
 
 	public String getLoginresult() {
 	return loginresult;
@@ -81,6 +84,7 @@ public void setLoginresult(String loginresult) {
  * @return String login 返回登录界面
  */
 	public  String login() throws Exception{
+		map=new HashMap<String,Object>();
 			if(us.checkPass(user.getM_sUserName(), user.getM_sUserPass())){
 				ActionContext.getContext().getSession().put("useinfo", user);
 				map.put("status", 2);
@@ -102,27 +106,49 @@ public void setLoginresult(String loginresult) {
 		return "userinfo";
 	}
 	/**
-	 * 
+	 * 注册加验证验证码
 	 * @return fail 表示注册失败
 	 * @return register 注册成功 跳转
 	 * @throws Exception
 	 */
-	public String regist() throws Exception{
-		String validateCode = ServletActionContext.getRequest().getParameter("validateCode");
-		if(us.checkName(user.getM_sUserName())){
-			if(validateCode.equals(map.get("registerValCode"))){
+	public String checkCode() throws Exception{
+		map=new HashMap<String,Object>();
+		String checkCode = ServletActionContext.getRequest().getParameter("checkCode");
+		if(!us.checkName(user.getM_sUserName())){
+			if(checkCode.equals(validateCode)){
 				us.register(user);
-				return "registe";
+				map.put("status", 2);
 			}else{
-				map.put("validateStatus",1);
+				map.put("status",1);
 			}
-		}else{
-			map.put("registStatus", 1);
 		}
-		JSONObject json = JSONObject.fromObject(map);
-		registResult =json.toString();
-		return "fail";
+			JSONObject json= JSONObject.fromObject(map);
+			registeresult=json.toString();
+			return SUCCESS;
 	}
+	/**
+	 * 验证名字
+	 * @return
+	 */
+	public String checkName(){
+		map = new HashMap<String,Object>();
+		if(!us.checkName(user.getM_sUserName())){
+			map.put("status", 2);
+		}else{
+			map.put("status", 1);
+		}
+		JSONObject json= JSONObject.fromObject(map);
+		registeresult =json.toString();
+			return SUCCESS;
+	}
+//	public String getCheckNameResult() {
+//		return checkNameResult;
+//	}
+//
+//	public void setCheckNameResult(String checkNameResult) {
+//		this.checkNameResult = checkNameResult;
+//	}
+
 	public String activate() throws ServiceNotFoundException{
 		
 		String email =ServletActionContext.getRequest().getParameter("email");
@@ -134,12 +160,21 @@ public void setLoginresult(String loginresult) {
 	 * 验证码产生
 	 * @return
 	 */
-	private String validateRegister(){
-		 String validateCode = Integer.toString((int)Math.random()*10000);
+	private  String validateCode ;
+	public  String createCheck(){
+		 validateCode = Integer.toString((int)Math.random()*10000);
 		  map = new HashMap<String,Object>();
-		 map.put("registerValCode", validateCode);
+		 map.put("src", validateCode);
 		 JSONObject json =JSONObject.fromObject(map);
-		 validateC = json.toString();
+		 registeresult = json.toString();
 		 return SUCCESS;
 	}
+
+//	public String getCodeResult() {
+//		return codeResult;
+//	}
+//
+//	public void setCodeResult(String codeResult) {
+//		this.codeResult = codeResult;
+//	}
 }

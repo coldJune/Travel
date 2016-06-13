@@ -15,8 +15,8 @@
     		<action name="loginUserAction" class="userAction" method="login">
     			<result name="login" type="json">loginresult</result>
     		</action>
-    		<action name="registeUserAction" class="userAction" method="regist">
-    			<result name="fail" type="json">registResult</result>
+    		<action name="*RegisteAction" class="userAction" method="{1}">
+    			<result  type="json">registeresult</result>
     		</action>
     	</package>
   

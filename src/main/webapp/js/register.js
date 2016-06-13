@@ -4,7 +4,7 @@
 $(function(){
     var check = {
         "type": "POST",
-        "url": "",
+        "url": "createCheckRegisteAction",
         "dataType": "json",
         "success": function (data) {
             var data = $.parseJSON(data);
@@ -21,7 +21,7 @@ $(function(){
         var $error_length = $(this).siblings(".error").length;
         $.ajax({
             "type":"POST",
-            "url":"",
+            "url":"checkCodeRegisteAction",
             "data":{"checkcode":$checkcode},
             "dataType":"json",
             "success":function(data){
@@ -43,7 +43,7 @@ $(function(){
         var $error_length = $(this).siblings(".error").length;
         $.ajax({
             "type":"POST",
-            "url":"",
+            "url":"checkNameRegisteAction",
             "dataType":"json",
             "data":{"UserName":$username},
             "success":function(data){

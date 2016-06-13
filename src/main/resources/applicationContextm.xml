@@ -96,9 +96,9 @@
 		</bean>
 			
 			
-		<bean id="userAction" class="com.competition.db.action.UserAction"
+		<!--<bean id="userAction" class="com.competition.db.action.UserAction"
 			scope="prototype" p:uas-ref="uas"/>
-			
+			-->
 			
 		<!-- <bean id="userBackgroundAction" class="com.competition.db.action.UserBackgroundAction"
 			scope="prototype" p:ms-ref="userBackgroundDao"/> -->
