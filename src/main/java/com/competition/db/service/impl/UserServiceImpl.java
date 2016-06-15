@@ -24,8 +24,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean checkName(String name) {
 		// TODO Auto-generated method stub
-		User user =(User) userDao.findUserByName(name);
-		if(user.getM_sUserName()!=null){
+		System.out.println(name);
+		User user = userDao.findUserByName(name);
+		
+		if(user!=null){
 			return true;
 		}
 		return false;
@@ -77,7 +79,8 @@ public class UserServiceImpl implements UserService {
 	public void register(User user) {
 		// TODO Auto-generated method stub
 		String email=user.getM_sUserName();
-		
+		System.out.println(user);
+		System.out.println(email);
 		user.setRegisterTime(new Date());
 		user.setM_bIsMailActivate(false);
 		user.setValidateCode(MD5Util.encode2hex(email));

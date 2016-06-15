@@ -75,17 +75,24 @@
 			
 	<!-- 配置service实现类的bean -->
 		<bean id="us"
-			class="com.competition.db.service.impl.UserServiceImpl"/>
+			class="com.competition.db.service.impl.UserServiceImpl"
+				p:userDao-ref="userDao"/>
 		<bean id="ucs"
-			class="com.competition.db.service.impl.UserCollectionServiceImpl"/>
+			class="com.competition.db.service.impl.UserCollectionServiceImpl"
+				p:userCollectionDao-ref="userCollectionDao"/>
 		<bean id="ubs"
-			class="com.competition.db.service.impl.UserBackgroundServiceImpl"/>
+			class="com.competition.db.service.impl.UserBackgroundServiceImpl"
+				p:userBackgroundDao-ref="userBackgroundDao"/>
 		<bean id="uas"
-			class="com.competition.db.service.impl.UserAlbumServiceImpl"/>
+			class="com.competition.db.service.impl.UserAlbumServiceImpl"
+				p:userAlbumDao-ref="userAlbumDao"/>
 		<bean id="aps"
-			class="com.competition.db.service.impl.AlbumPhotoServiceImpl"/>
+			class="com.competition.db.service.impl.AlbumPhotoServiceImpl"
+				p:albumPhotoDao-ref="albumPhotoDao"/>
 		<bean id="acs"
-			class="com.competition.db.service.impl.AlbumCommentServiceImpl"/>
+			class="com.competition.db.service.impl.AlbumCommentServiceImpl"
+				p:albumCommentDao-ref="albumCommentDao"/>
+
 	<!-- 配置action bean-->
 		<bean id="albumCommentAction" class="com.competition.db.action.AlbumCommentAction"
 			scope="prototype" p:acs-ref="acs"/>
@@ -96,9 +103,9 @@
 		</bean>
 			
 			
-		<!--<bean id="userAction" class="com.competition.db.action.UserAction"
-			scope="prototype" p:uas-ref="uas"/>
-			-->
+		  <bean id="userAction" class="com.competition.db.action.UserAction"
+			scope="prototype" p:us-ref="us"/>
+			
 			
 		<!-- <bean id="userBackgroundAction" class="com.competition.db.action.UserBackgroundAction"
 			scope="prototype" p:ms-ref="userBackgroundDao"/> -->

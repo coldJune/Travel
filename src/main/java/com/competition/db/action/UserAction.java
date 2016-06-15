@@ -1,5 +1,6 @@
 package com.competition.db.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,9 +8,11 @@ import javax.management.ServiceNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.competition.db.pojo.User;
 import com.competition.db.service.UserService;
+import com.competition.db.tool.*;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
@@ -18,16 +21,26 @@ import net.sf.json.JSONObject;
  * @author 笨蛋
  *
  */
-public class UserAction extends ActionSupport {
+public class UserAction extends ActionSupport implements SessionAware{
 	/**
 	 * 
 	 */
+	private Map<String, Object> session;
 	private static final long serialVersionUID = -9175766057987372213L;
 	private User user;
 	private UserService us;
 	private String loginresult;
 	private String registeresult;
+	private ByteArrayInputStream imageStream;
 	
+public ByteArrayInputStream getImageStream() {
+		return imageStream;
+	}
+
+	public void setImageStream(ByteArrayInputStream imageStream) {
+		this.imageStream = imageStream;
+	}
+
 public String getRegisteresult() {
 		return registeresult;
 	}
@@ -71,9 +84,6 @@ public void setLoginresult(String loginresult) {
 		this.user = user;
 	}
 
-	public UserService getUs() {
-		return us;
-	}
 
 	public void setUs(UserService us) {
 		this.us = us;
@@ -113,9 +123,18 @@ public void setLoginresult(String loginresult) {
 	 */
 	public String checkCode() throws Exception{
 		map=new HashMap<String,Object>();
-		String checkCode = ServletActionContext.getRequest().getParameter("checkCode");
-		if(!us.checkName(user.getM_sUserName())){
-			if(checkCode.equals(validateCode)){
+		Map<String,Object>  session = ActionContext.getContext().getSession();
+		String checkCode = ServletActionContext.getRequest().getParameter("checkcode");
+		
+		String securityCode = (String) session.get("securityCode");
+		System.out.println(checkCode+" "+securityCode);
+		String name = ServletActionContext.getRequest().getParameter("UserName");
+		String psw = ServletActionContext.getRequest().getParameter("userpsw");
+		if(!us.checkName(name)){
+			if(checkCode.equals(securityCode)){
+				User user = new User();
+				user.setM_sUserName(name);
+				user.setM_sUserPass(psw);
 				us.register(user);
 				map.put("status", 2);
 			}else{
@@ -132,11 +151,16 @@ public void setLoginresult(String loginresult) {
 	 */
 	public String checkName(){
 		map = new HashMap<String,Object>();
-		if(!us.checkName(user.getM_sUserName())){
-			map.put("status", 2);
-		}else{
-			map.put("status", 1);
-		}
+		String name = ServletActionContext.getRequest().getParameter("UserName");
+		//if(RegExpValidator.isEmail(name)){
+			if(!us.checkName(name)){
+				map.put("status", 2);
+			}else{
+				map.put("status", 1);
+			}
+	//	}else{
+	//		map.put("status", 3);
+		//}
 		JSONObject json= JSONObject.fromObject(map);
 		registeresult =json.toString();
 			return SUCCESS;
@@ -162,12 +186,16 @@ public void setLoginresult(String loginresult) {
 	 */
 	private  String validateCode ;
 	public  String createCheck(){
-		 validateCode = Integer.toString((int)Math.random()*10000);
-		  map = new HashMap<String,Object>();
-		 map.put("src", validateCode);
-		 JSONObject json =JSONObject.fromObject(map);
-		 registeresult = json.toString();
-		 return SUCCESS;
+		String securityCode = SecurityCode.getSecurityCode();
+		imageStream =SecurityImage.getImageAsInputStream(securityCode);
+		session.put("securityCode", securityCode);
+		return "checkcode";
+	}
+
+	@Override
+	public void setSession(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
+		this.session=arg0;
 	}
 
 //	public String getCodeResult() {

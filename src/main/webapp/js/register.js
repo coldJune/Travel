@@ -4,12 +4,16 @@
 $(function(){
     var check = {
         "type": "POST",
-        "url": "createCheckRegisteAction",
-        "dataType": "json",
-        "success": function (data) {
-            var data = $.parseJSON(data);
-            $("#checkcode").attr("src", data.src);
-        }
+        "url": "user/createCheckRegisteAction",
+        //"dataType": "json",
+        //"success": function (data) {
+          //  var data = $.parseJSON(data);
+            //$("#checkcode").attr("src", data.src);
+        //}
+    	"success":function(){
+    		$("#checkcode").attr("src","user/createCheckRegisteAction?timestamp="+new Date().getTime());//timestamp是指拿到时间戳，
+    																									//防止缓存
+    	}
     };
     $.ajax(check);//页面打开就加载一个验证码
     $("#checkcode").on('click',function(){
@@ -21,7 +25,7 @@ $(function(){
         var $error_length = $(this).siblings(".error").length;
         $.ajax({
             "type":"POST",
-            "url":"checkCodeRegisteAction",
+            "url":"user/checkCodeRegisteAction",
             "data":{"checkcode":$checkcode},
             "dataType":"json",
             "success":function(data){
@@ -43,19 +47,20 @@ $(function(){
         var $error_length = $(this).siblings(".error").length;
         $.ajax({
             "type":"POST",
-            "url":"checkNameRegisteAction",
+            "url":"user/checkNameRegisteAction",
             "dataType":"json",
             "data":{"UserName":$username},
             "success":function(data){
                 var data = $.parseJSON(data);
                 if(data.status==2&&$pass_length==0){
                     $("#error_name").remove();
-                    $("#username").after("<span class='pass' id='pass_name'>√<span>");
+                    $("#usernamge").after("<span class='pass' id='pass_name'>√<span>");
                 }
                 else if(data.status==1&&$error_length==0){
                     $("#pass_name").remove();
                     $("#username").after("<span class='error' id='error_name'>昵称已存在<span>");
                 }
+              
             }
         })
     });//用户名输入框失去焦点检验用户名是否合格
