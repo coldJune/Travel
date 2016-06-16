@@ -5,12 +5,6 @@
     <struts>
     	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
     	<constant name="struts.devMode" value="true"></constant>
-    	<!--  <package name="default" namespace="/" extends="struts-default">
-    		 <action name="emp-*" class="employeeAction" method="{1}">
-    			<result name="list">emp/emp-list.jsp</result>
-    		</action>
-    	</package>
-    	-->
     	<package name="user" namespace="/user" extends="struts-default,json-default">
     		<action name="loginUserAction" class="userAction" method="login">
     			<result name="login" type="json">loginresult</result>
@@ -20,16 +14,27 @@
     		</action>
     	</package>
 
-    	<package name="albumPhoto" extends="struts-default">
+    	<!-- <package name="albumPhoto" extends="struts-default">
     		<action name="uploadPhotos" class="com.competition.db.action.AlbumPhotoAction" method="uploadPhotos">
-    			<param name="savePath">/src/main/resources/UserPhotos</param>
+    			<param name="savePath">/src/test/resources/UserPhotos</param>
+    		</action>
+    	</package>
+    	 -->
+    	<!-- 关于命名空间如何使用 -->
+    	
+    	
+    	<!-- 测试AlbumPhotoAction使用 -->
+    <!-- 	<package name="lee" extends="struts-default">	
+    		<action name="upload" class="com.competition.db.action.AlbumPhotoAction" method="uploadPhotos">
+    			<param name="savePath">/UserPhotos</param>
+    		</action>
+    	</package> -->
+    	
+    	<package name="json" extends="json-default">
+    		<action name="upload" class="com.competition.db.action.AlbumPhotoAction" method="uploadPhotos">
+    			<param name="savePath">/UserPhotos</param>
+    			<result name="success" type="json"></result>
     		</action>
     	</package>
     	
-    	<!-- 测试AlbumPhotoAction使用 -->
-    	<package name="lee" extends="struts-default">
-    		<action name="upload" class="com.competition.db.action.AlbumPhotoAction" method="uploadFiles">
-    			
-    		</action>
-    	</package>
     </struts>

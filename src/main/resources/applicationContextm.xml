@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- spring容器的配置文件 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation=
-	"http://www.springframework.org/schema/beans 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-4.2.xsd
@@ -16,7 +13,7 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 	<!-- 导入资源文件 -->
-	<context:property-placeholder location="classpath:db.properties"/>
+	<context:property-placeholder location="classpath:db.properties" />
 	<!-- 配置c3p0数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="${jdbc.user}"></property>
@@ -26,83 +23,90 @@
 		<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
 		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
 	</bean>
-	
+
 	<!-- 配置sessionFactory -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<!-- 引用数据源 -->
-		<property name="dataSource" ref="dataSource"></property>	
-			
+		<property name="dataSource" ref="dataSource"></property>
+
 		<!-- 引用hibernate配置文件 -->
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		
+
 	</bean>
-	
+
 	<!-- 配置Spring的声明式事务 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<!-- 配置sessionFactory -->
-		<property name="sessionFactory" ref="sessionFactory"></property>	
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<!-- 配置事务属性 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="get*" read-only="true"/>
-			<tx:method name="*"/>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
 	<!-- 配置事务的契入点，再把事务属性和事务切入点关联起来 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* com.competition.db.service.impl.*.*(..))" id="txPointCut"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+		<aop:pointcut expression="execution(* com.competition.db.service.impl.*.*(..))"
+			id="txPointCut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" />
 	</aop:config>
-	
+
 	<!-- 配置dao实现类的bean -->
-		<bean id="daoTemplate" abstract="true" lazy-init="true"
-			p:sessionFactory-ref="sessionFactory"/>
-		<bean id="userDao"
-			class="com.competition.db.dao.impl.UserDaoImpl" parent="daoTemplate"/>
-		<bean id="userAlbumDao" 
-			class="com.competition.db.dao.impl.UserAlbumDaoImpl" parent="daoTemplate"/>
-		<bean id="userCollectionDao"
-			class="com.competition.db.dao.impl.UserCollectionDaoImpl"  parent="daoTemplate"/>
-		<bean id="userBackgroundDao"
-			class="com.competition.db.dao.impl.UserBackgroundDaoImpl" parent="daoTemplate"/>
-		<bean id="albumCommentDao"
-			class="com.competition.db.dao.impl.AlbumCommentDaoImpl" parent="daoTemplate"/>
-		<bean id="albumPhotoDao"
-			class="com.competition.db.dao.impl.AlbumPhotoDaoImpl" parent="daoTemplate"/>
-			
+	<bean id="daoTemplate" abstract="true" lazy-init="true"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="userDao" class="com.competition.db.dao.impl.UserDaoImpl"
+		parent="daoTemplate" />
+	<bean id="userAlbumDao" class="com.competition.db.dao.impl.UserAlbumDaoImpl"
+		parent="daoTemplate" />
+	<bean id="userCollectionDao" class="com.competition.db.dao.impl.UserCollectionDaoImpl"
+		parent="daoTemplate" />
+	<bean id="userBackgroundDao" class="com.competition.db.dao.impl.UserBackgroundDaoImpl"
+		parent="daoTemplate" />
+	<bean id="albumCommentDao" class="com.competition.db.dao.impl.AlbumCommentDaoImpl"
+		parent="daoTemplate" />
+	<bean id="albumPhotoDao" class="com.competition.db.dao.impl.AlbumPhotoDaoImpl"
+		parent="daoTemplate" />
+
 	<!-- 配置service实现类的bean -->
-		<bean id="us"
-			class="com.competition.db.service.impl.UserServiceImpl"/>
-		<bean id="ucs"
-			class="com.competition.db.service.impl.UserCollectionServiceImpl"/>
-		<bean id="ubs"
-			class="com.competition.db.service.impl.UserBackgroundServiceImpl"/>
-		<bean id="uas"
-			class="com.competition.db.service.impl.UserAlbumServiceImpl"/>
-		<bean id="aps"
-			class="com.competition.db.service.impl.AlbumPhotoServiceImpl"/>
-		<bean id="acs"
-			class="com.competition.db.service.impl.AlbumCommentServiceImpl"/>
-	<!-- 配置action bean-->
-		<bean id="albumCommentAction" class="com.competition.db.action.AlbumCommentAction"
-			scope="prototype" p:acs-ref="acs"/>
-			
-		<bean id="albumPhotoAction" class="com.competition.db.action.AlbumPhotoAction">
-			<property name="uas"  ref="uas"/>
-			<property name="aps" ref="aps"/>
-		</bean>
-			
-			
-		<bean id="userAction" class="com.competition.db.action.UserAction"
-			scope="prototype" p:uas-ref="uas"/>
-			
-			
-		<!-- <bean id="userBackgroundAction" class="com.competition.db.action.UserBackgroundAction"
-			scope="prototype" p:ms-ref="userBackgroundDao"/> -->
-		
-		<bean id="userCollectionAction" class="com.competition.db.action.UserCollectionAction"
-			scope="prototype" p:ucs-ref="ucs"/>
+	<bean id="us" class="com.competition.db.service.impl.UserServiceImpl"
+		p:userDao-ref="userDao" />
+	<bean id="ucs"
+		class="com.competition.db.service.impl.UserCollectionServiceImpl"
+		p:userCollectionDao-ref="userCollectionDao" />
+	<bean id="ubs"
+		class="com.competition.db.service.impl.UserBackgroundServiceImpl"
+		p:userBackgroundDao-ref="userBackgroundDao" />
+	<bean id="uas" class="com.competition.db.service.impl.UserAlbumServiceImpl"
+		p:userAlbumDao-ref="userAlbumDao" />
+	<bean id="aps" class="com.competition.db.service.impl.AlbumPhotoServiceImpl"
+		p:albumPhotoDao-ref="albumPhotoDao" />
+	<bean id="acs" class="com.competition.db.service.impl.AlbumCommentServiceImpl"
+		p:albumCommentDao-ref="albumCommentDao" />
+	<!-- 配置action bean -->
+	<bean id="albumCommentAction" class="com.competition.db.action.AlbumCommentAction"
+		scope="prototype" p:acs-ref="acs" />
+
+	<bean id="albumPhotoAction" class="com.competition.db.action.AlbumPhotoAction">
+		<property name="uas" ref="uas" />
+		<property name="aps" ref="aps" />
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<!-- <bean id="userAction" class="com.competition.db.action.UserAction" 
+		scope="prototype" p:us-ref="us"/> -->
+
+	<bean id="userAction" class="com.competition.db.action.UserAction">
+		<property name="us" ref="us" />
+	</bean>
+
+	<!-- <bean id="userBackgroundAction" class="com.competition.db.action.UserBackgroundAction" 
+		scope="prototype" p:ms-ref="userBackgroundDao"/> -->
+
+	<bean id="userCollectionAction" class="com.competition.db.action.UserCollectionAction"
+		scope="prototype" p:ucs-ref="ucs" />
 </beans>

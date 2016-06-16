@@ -61,21 +61,4 @@ public class UserAlbumDaoImpl extends BasicOperation<UserAlbum> implements UserA
 		// TODO Auto-generated method stub
 		return album.getM_iPhotoNum();
 	}
-
-	/**
-	 * 根据User对象找到所有的相册
-	 * 
-	 * 与getAll功能重合
-	 */
-//	@Override
-//	public List<UserAlbum> findAlbumsByUsrObj(User user) {
-//		// TODO Auto-generated method stub
-//		Set<UserAlbum> userAlbum_set = user.getM_UAAlbums();
-//		List<UserAlbum>userAlbums = new ArrayList<>();
-//		for(Object ele: userAlbum_set){
-//			UserAlbum userAlbum = (UserAlbum)ele;
-//			userAlbums.add(userAlbum);
-//		}
-//		return userAlbums;
-//	}
 }

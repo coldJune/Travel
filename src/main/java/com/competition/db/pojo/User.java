@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -56,6 +57,7 @@ public class User{
 	//邮箱激活状况
 	@Column(name="user_mailStatus", nullable=true)
 	private Boolean m_bIsMailActivate;
+	
 	//注册时间
 	@Column(name="user_registerTime",nullable=true)
 	private Date registerTime;
@@ -83,15 +85,17 @@ public class User{
 	@OneToMany(targetEntity=UserCollection.class,mappedBy="m_UUser")
 	private Set<UserCollection> m_UCUserCollection = new HashSet<>();
 	
-	//关注用户
-//	private UserInfos m_UIUserFollow;
-	
+	@OneToMany(targetEntity=UserFollow.class,mappedBy="m_UUser")
+	private Set<UserFollow> m_UFUserFollow = new HashSet<>();
+		
 	//用户头像
 	@Lob
 	@Column(name="user_icon", nullable=true)
 	private byte[] m_BUesrIcon;
 
-
+	@OneToMany(targetEntity=UserRefreshInformation.class,mappedBy="m_UUser")
+	private Set<UserRefreshInformation> userRefreshInformation = new HashSet<>();
+	
 	public User(){
 		
 	}
@@ -163,6 +167,7 @@ public class User{
 	public void setLastActivateTime(Date lastActivateTime) {
 		this.lastActivateTime = lastActivateTime;
 	}
+	
 	public void setM_DUserBirth(Date m_DUserBirth) {
 		this.m_DUserBirth = m_DUserBirth;
 	}
@@ -206,6 +211,14 @@ public class User{
 	public void setM_UCUserCollection(Set<UserCollection> m_UCUserCollection) {
 		this.m_UCUserCollection = m_UCUserCollection;
 	}
+	
+	public Set<UserFollow> getM_UFUserFollow() {
+		return m_UFUserFollow;
+	}
+
+	public void setM_UFUserFollow(Set<UserFollow> m_UFUserFollow) {
+		this.m_UFUserFollow = m_UFUserFollow;
+	}
 
 	public byte[] getM_BUesrIcon() {
 		return m_BUesrIcon;
@@ -213,5 +226,14 @@ public class User{
 
 	public void setM_BUesrIcon(byte[] m_BUesrIcon) {
 		this.m_BUesrIcon = m_BUesrIcon;
+	}
+
+	public Set<UserRefreshInformation> getUserRefreshInformation() {
+		return userRefreshInformation;
+	}
+
+	public void setUserRefreshInformation(
+			Set<UserRefreshInformation> userRefreshInformation) {
+		this.userRefreshInformation = userRefreshInformation;
 	}
 }

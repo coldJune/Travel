@@ -23,7 +23,14 @@ public interface UserAlbumDao extends BasicDao<UserAlbum>{
 	 * @return
 	 */
 	public int findNumOfAlbumPhoto(UserAlbum album);
-		
+	
+//	/**
+//	 * 查找符合条件的多个用户的相册记录
+//	 * @param Id	多个用户的用户名
+//	 * @return 返回查找到的所有记录
+//	 */
+//	public List<UserAlbum> findAlbumByUserId(String Id[]);
+//		
 	//改
 	public void updateAlbumByAluObj(UserAlbum album);
 	

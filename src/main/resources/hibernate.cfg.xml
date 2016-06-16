@@ -15,12 +15,12 @@
     <property name="connection.url">jdbc:mysql://localhost:3306/travel?useUnicode=true&amp;characterEncoding=UTF8</property>
     
     
-    <mapping class="bbw.dao.pojo.User"/>
-    <mapping class="bbw.dao.pojo.UserAlbum"/>
-    <mapping class="bbw.dao.pojo.AlbumComment"/>
- 	<mapping class="bbw.dao.pojo.UserBackground"/>
- 	<mapping class="bbw.dao.pojo.UserCollection"/>
-    <mapping class="bbw.dao.pojo.AlbumPhoto"/>
+    <mapping class="com.competition.db.pojo.AlbumComment"/>
+    <mapping class="com.competition.db.pojo.AlbumPhoto"/>
+    <mapping class="com.competition.db.pojo.User"/>
+ 	<mapping class="com.competition.db.pojo.UserAlbum"/>
+ 	<mapping class="com.competition.db.pojo.UserBackground"/>
+    <mapping class="com.competition.db.pojo.UserCollection"/>
 
  </session-factory>
 </hibernate-configuration>

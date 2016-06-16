@@ -44,8 +44,8 @@ public class UserDaoImpl extends BasicOperation<User> implements UserDao<User> {
 	@Override
 	public User findUserByName(String name) {
 		// TODO Auto-generated method stub
-		String hql = "select distinct user from User as user where user.m_sUserName=?0";		
-		List<User> result = find(hql,name); 
+		String hql = "select distinct user from User as user where user.m_sUserName=?0";
+		List<User> result = find(hql,name);
 		if(result !=null && result.size() != 0){
 			return result.get(0);
 		}
@@ -72,9 +72,6 @@ public class UserDaoImpl extends BasicOperation<User> implements UserDao<User> {
 			User user = (User)ele;
 			result.add(user);
 		}
-		
 		return result;
 	}
-
-	
 }
